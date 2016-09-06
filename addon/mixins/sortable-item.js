@@ -434,6 +434,7 @@ export default Mixin.create({
       this.set('y', dimension);
     }
 
+    Ember.Logger.debug(`[_drag] groupDirection: ${groupDirection}, dimension: ${dimension}`);
     run.throttle(this, '_tellGroup', 'update', updateInterval);
   },
 

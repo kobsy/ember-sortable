@@ -4,6 +4,31 @@
   </header>
 
   <main>
+    <section class="vertical-demo"> {{!-- TODO: Make styles appropriate for the nested demo --}}
+      <h3>Nested</h3>
+
+      {{#sortable-group as |containerGroup|}}
+        <h4>Spanish</h4>
+        {{#sortable-group tagName="ol" group=containerGroup onChange="nestedUpdate" model="items" as |innerGroup|}}
+          {{#each model.items as |item|}}
+            {{#sortable-item tagName="li" model=item group=innerGroup handle=".handle"}}
+              {{item}}
+              <span class="handle" data-item="{{item}}"><span>&vArr;</span></span>
+            {{/sortable-item}}
+          {{/each}}
+        {{/sortable-group}}
+        <h4>English</h4>
+        {{#sortable-group tagName="ol" group=containerGroup onChange="nestedUpdate" model="alsoItems" as |innerGroup|}}
+          {{#each model.alsoItems as |item|}}
+            {{#sortable-item tagName="li" model=item group=innerGroup handle=".handle"}}
+              {{item}}
+              <span class="handle" data-item="{{item}}"><span>&vArr;</span></span>
+            {{/sortable-item}}
+          {{/each}}
+        {{/sortable-group}}
+      {{/sortable-group}}
+    </section>
+
     <section class="vertical-demo">
       <h3>Vertical</h3>
 
